@@ -16,10 +16,12 @@ if (sizeof($argv) == 2) {
     
         $user = json_decode($response);
         
+        $date = date('d-m-Y',strtotime($user->created_at));
+        
         if ( strpos($http_response_header[0], "200") ) {       
         
             print "       User: @" . $user->screen_name . "\r\n";
-            print "      Since: " . $user->created_at . "s\r\n";
+            print "      Since: " . $date . "\r\n";
             print "\r\n";
             print "       Name: " . $user->name . "\r\n";
             print "        Bio: " . $user->description. "\r\n";
